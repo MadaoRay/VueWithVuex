@@ -45,6 +45,7 @@ export default{
   		  	  {
   		  	  	title: '智能地图',
   		  	  	url: 'http://map.com'
+              hot: true
   		  	  }
 		  	  ]
 		  	}
