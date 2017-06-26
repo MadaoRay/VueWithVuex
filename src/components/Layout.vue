@@ -12,7 +12,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="app-content">
+		<div class="container">
 			<keep-alive>
 				<router-view></router-view>
 			</keep-alive>
@@ -33,20 +33,27 @@ export default{
 }
 </script>
 
-<style scoped>
-html, body, div{
+<style>
+html, body, div, h3, h2, span, ol, ul, li, p{
 	margin: 0;
 	padding: 0;
 	border: 0;
 	vertical-align: baseline;
+	font-size: 100%;
+	font-weight: normal;
 }
 body{
 	background-color: #f0f2f5;
-	font-size: 16px;
+	font-size: 14px;
 	color: #444;
+	line-height: 1;
 }
-li{
+ol,ul{
 	list-style: none;
+}
+a{
+	color: inherit;
+	text-decoration: none;
 }
 .app-header{
 	background-color: #363636;
