@@ -20,7 +20,10 @@
   	</div>
       <div class="menu-right">
         <div class="board-list">
-          <div class="board-item" v-for="item in boardList">
+          <div 
+          class="board-item" 
+          v-for="(item, index) in boardList"
+          :class="[{'line-last':index%2!==0},'item-'+item.id]">
             <div class="content">
               <h3>{{ item.title }}</h3>
               <p>{{ item.description }}</p>
@@ -162,6 +165,10 @@ ul li{
   padding: 20px;
   float: left;
   min-height: 135px;
+  margin: 0 20px 10px 0;
+}
+.menu-right .board-item.line-last{
+  margin: 0;
 }
 .menu-right .board-item .content{
 padding-left: 125px;
@@ -178,5 +185,17 @@ padding-left: 125px;
   color: white;
   padding: 10px 15px;
   display: inline-block;
+} 
+.item-car .content{
+  background: url(../assets/images/2.png) no-repeat;
+}
+.item-earth .content{
+  background: url(../assets/images/1.png) no-repeat;
+}
+.item-hill .content{
+  background: url(../assets/images/4.png) no-repeat;
+}
+.item-loud .content{
+  background: url(../assets/images/3.png) no-repeat;
 }
 </style>
