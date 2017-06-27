@@ -23,6 +23,20 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
 var proxyTable = config.dev.proxyTable
 
 var app = express()
+
+//通过json-server来启动测试服务器模拟数据
+// var jsonServer = require('json-server')
+// var apiServer = jsonServer.create()
+// var apiRouter = jsonServer.router('db.json')
+// var middlewares = jsonServer.defaults()
+
+// apiServer.use(middlewares)
+// apiServer.use('/api',apiRouter)
+// apiServer.listen(port+1,()=>{
+//   console.log('Json Server is running')
+// })
+var apiServer = express()
+
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {

@@ -16,6 +16,11 @@
       </div>
       <div class="products latest-news">
         <h2>最新消息</h2>
+        <ul>
+          <li v-for="item in newsList">
+            <a :href="item.url" class="news-item">{{ item.title }}</a>
+          </li>
+        </ul>
       </div>
   	</div>
       <div class="menu-right">
@@ -39,6 +44,22 @@
 
 <script>
 export default{
+  // created:function() {
+  //   this.$http.get('api/getNewsList')
+  //   .then(function(result){
+  //     this.newsList = result.data
+  //   },function(error){
+  //     console.log(error)
+  //   })
+  // },
+    created:function() {
+    this.$http.get('api/getNewsList')//json-server模拟服务器上的模拟数据
+    .then((result)=>{
+      this.newsList = result.data//代码环境下的this
+    },(error)=>{
+      console.log(error)
+    })
+  },
 	data() {
 		return {
 		  productList: {
@@ -132,7 +153,7 @@ export default{
   padding: 10px;
   margin-bottom: 15px;
 }
-.menu-left .products .title ul{
+ul{
   padding: 5px 15px;
 }
 .menu-left .products h3{
@@ -197,5 +218,12 @@ padding-left: 125px;
 }
 .item-loud .content{
   background: url(../assets/images/3.png) no-repeat;
+}
+.news-item{
+  display: inline-block;
+  width: 230px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 </style>
