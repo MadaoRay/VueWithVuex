@@ -35,7 +35,31 @@ var app = express()
 // apiServer.listen(port+1,()=>{
 //   console.log('Json Server is running')
 // })
+
 var apiServer = express()
+var bodyParser = require('body-parser')//node组件
+apiServer.use(bodyParser.urlencoded({ extend: true}))
+apiServer.use(bodyParser.json())
+var apiRouter = express.Router()
+var fs = require('fs')
+apiRouter.get('/',function(req,res)){
+  res.json({message: 'hooray! welcome to our api!'})
+}
+apiServer.router('/:apiName').all(function(req,res){
+  fs.readFile('./db.json','utf8',function(err,data){
+    if(err){
+      throw err
+    }
+    var data = Json.parse(data)
+    if(data[req.params.apiName]){
+      res.json(data[req.params.apiName])
+    }
+    else{
+      res.send('no such api name')
+    }
+  })
+})
+apiServer.use('/api',apiRouter)
 
 var compiler = webpack(webpackConfig)
 
