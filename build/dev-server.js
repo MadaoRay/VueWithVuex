@@ -37,20 +37,17 @@ var app = express()
 // })
 
 var apiServer = express()
-var bodyParser = require('body-parser')//node组件
-apiServer.use(bodyParser.urlencoded({ extend: true}))
+var bodyParser = require('body-parser')
+apiServer.use(bodyParser.urlencoded({ extended: true }))
 apiServer.use(bodyParser.json())
 var apiRouter = express.Router()
 var fs = require('fs')
-apiRouter.get('/',function(req,res)){
-  res.json({message: 'hooray! welcome to our api!'})
-}
-apiServer.router('/:apiName').all(function(req,res){
-  fs.readFile('./db.json','utf8',function(err,data){
+apiRouter.route('/:apiName').all(function (req, res){
+  fs.readFile('./db.json', 'utf8', function (err, data){
     if(err){
       throw err
     }
-    var data = Json.parse(data)
+    var data = JSON.parse(data)
     if(data[req.params.apiName]){
       res.json(data[req.params.apiName])
     }
@@ -60,6 +57,15 @@ apiServer.router('/:apiName').all(function(req,res){
   })
 })
 apiServer.use('/api',apiRouter)
+apiServer.listen(port + 1, function(err){
+  if(err){
+    console.log(err)
+    return
+  }
+  else{
+    console.log('listening at http://localhost:' + (port + 1))
+  }
+})
 
 var compiler = webpack(webpackConfig)
 

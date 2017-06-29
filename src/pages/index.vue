@@ -24,6 +24,7 @@
       </div>
   	</div>
       <div class="menu-right">
+        <slide-show></slide-show>
         <div class="board-list">
           <div 
           class="board-item" 
@@ -43,15 +44,11 @@
 </template>
 
 <script>
+import slideShow from '../components/slideShow'
 export default{
-  // created:function() {
-  //   this.$http.get('api/getNewsList')
-  //   .then(function(result){
-  //     this.newsList = result.data
-  //   },function(error){
-  //     console.log(error)
-  //   })
-  // },
+    components: {
+      slideShow
+    },
     created:function() {
     this.$http.get('api/getNewsList')//json-server模拟服务器上的模拟数据
     .then((result)=>{
