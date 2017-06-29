@@ -24,7 +24,7 @@
       </div>
   	</div>
       <div class="menu-right">
-        <slide-show></slide-show>
+        <slide-show :slide=""></slide-show>
         <div class="board-list">
           <div 
           class="board-item" 
@@ -127,6 +127,23 @@ export default{
           id: 'hill',
           toKey: 'publish',
           saleout: false
+        }
+      ],
+      slides: [
+        {
+          src: require('../assets/slideShow/1.jpeg'),
+          title: '银魂1',
+          href: 'detail/analysis'
+        },
+        {
+          src: require('../assets/slideShow/2.jpeg'),
+          title: '银魂2',
+          href: 'detail/count'
+        },
+        {
+          src: require('../assets/slideShow/3.jpg'),
+          title: '银魂3',
+          href: 'detail/forecast'
         }
       ]
 		}
