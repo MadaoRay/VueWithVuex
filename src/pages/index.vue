@@ -24,11 +24,11 @@
       </div>
   	</div>
       <div class="menu-right">
-        <slide-show :slide=""></slide-show>
+        <slide-show :slides="slides" :time="slideSpeed"></slide-show>
         <div class="board-list">
           <div 
           class="board-item" 
-          v-for="(item, index) in boardList"
+          v-for="(item,index) in boardList"
           :class="[{'line-last':index%2!==0},'item-'+item.id]">
             <div class="content">
               <h3>{{ item.title }}</h3>
@@ -46,10 +46,10 @@
 <script>
 import slideShow from '../components/slideShow'
 export default{
-    components: {
-      slideShow
-    },
-    created:function() {
+  components: {
+    slideShow
+  },
+  created:function() {
     this.$http.get('api/getNewsList')//json-server模拟服务器上的模拟数据
     .then((result)=>{
       this.newsList = result.data//代码环境下的this
@@ -59,6 +59,7 @@ export default{
   },
 	data() {
 		return {
+      slideSpeed: 4000,
 		  productList: {
 		  	pc: {
 		  	  title: 'PC产品',
@@ -130,7 +131,7 @@ export default{
         }
       ],
       slides: [
-        {
+      {
           src: require('../assets/slideShow/1.jpeg'),
           title: '银魂1',
           href: 'detail/analysis'
@@ -145,6 +146,21 @@ export default{
           title: '银魂3',
           href: 'detail/forecast'
         }
+/*        {
+          src: require('../assets/slideShow2/pic1.jpg'),
+          title: '银魂1',
+          href: 'detail/analysis'
+        },
+        {
+          src: require('../assets/slideShow2/pic2.jpg'),
+          title: '银魂2',
+          href: 'detail/count'
+        },
+        {
+          src: require('../assets/slideShow2/pic3.jpg'),
+          title: '银魂3',
+          href: 'detail/forecast'
+        }*/
       ]
 		}
 	}
