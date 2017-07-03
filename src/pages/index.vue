@@ -24,7 +24,7 @@
       </div>
   	</div>
       <div class="menu-right">
-        <slide-show :slides="slides" :time="slideSpeed"></slide-show>
+        <slide-show :slides="slides" :time="slideSpeed" @onchange="doSthOnSlideChange"></slide-show>
         <div class="board-list">
           <div 
           class="board-item" 
@@ -56,6 +56,11 @@ export default{
     },(error)=>{
       console.log(error)
     })
+  },
+  methods:{
+    doSthOnSlideChange(){
+      console.log('doSthOnSlideChange run!')      
+    }
   },
 	data() {
 		return {

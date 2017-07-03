@@ -1,6 +1,6 @@
 <template>
   <div class="slide-container" @mouseover="stopInterval" @mouseout="runInterval">
-	  <div>
+	  <div class="slide-img">
 <!-- 	    <img :src="slides[slideIndex].src" width="900" height="500"> -->
 		<transition name="slide-trans">
 			<img v-if="isShow" :src="slides[slideIndex].src" width="900" height="500">
@@ -50,7 +50,8 @@ export default {
       setTimeout(() => {
         this.isShow = true
         this.slideIndex = index
-      }, 10)
+        this.$emit('onchange', index)//触发事件
+      },100)
     },
 /*  	pre(){
   		if(this.slideIndex == 0){
@@ -106,6 +107,7 @@ export default {
 	height: 500px;
 	margin: 15px 0;
 	position: relative;
+  overflow: hidden;
 }
 .slide-pages{
 	background-color: black;
@@ -144,6 +146,10 @@ li{
 	transform: translateX(-900px);
 	transition: all 2s;
 }*/
+.slide-img img{
+  position: absolute;
+  top: 0;
+}
 .slide-trans-enter-active {
   transition: all 2s;
 }
