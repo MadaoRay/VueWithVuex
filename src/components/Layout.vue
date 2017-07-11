@@ -4,11 +4,11 @@
 			<div class="app-head-inner">
 				<img src="../assets/logo.png">
 				<div class="nav-list">
-					<li>登录</li>
+					<li @click="loginClick">登录</li>
 					<li class="nav-pile">|</li>
-					<li>注册</li>
+					<li @click="registerClick">注册</li>
 					<li class="nav-pile">|</li>
-					<li>关于</li>
+					<li @click="aboutClick">关于</li>
 				</div>
 			</div>
 		</div>
@@ -20,15 +20,48 @@
 		<div class="app-footer">
 			<p>@ 2017 Ray</p>
 		</div>
+		<my-dialog :is-show="isShowAboutDialog" @on-close="closeDialog('isShowAboutDialog')">
+			<p>about</p>
+		</my-dialog>
+		<my-dialog :is-show="isShowLoginDialog" @on-close="closeDialog('isShowLoginDialog')">
+			<login-form></login-form>
+		</my-dialog>
+		<my-dialog :is-show="isShowRegisterDialog" @on-close="closeDialog('isShowRegisterDialog')">
+			<register-form></register-form>
+		</my-dialog>
 	</div>
 </template>
 
 <script>
+import Dialog from './dialog.vue'
+import LoginForm from './loginForm'
+import RegisterForm from './registerForm'
 export default{
+  components:{
+		MyDialog: Dialog,
+		LoginForm,
+		RegisterForm
+	},
   data () {
     return {
-      msg: 'msg'
+      isShowAboutDialog: false,
+      isShowLoginDialog: false,
+      isShowRegisterDialog: false
     }
+  },
+  methods:{
+  	aboutClick(){
+  		this.isShowAboutDialog = true
+  	},
+  	loginClick(){
+  		this.isShowLoginDialog = true
+  	},
+  	registerClick(){
+  		this.isShowRegisterDialog = true
+  	},
+  	closeDialog(attr){
+  		this[attr] = false
+  	}
   }
 }
 </script>

@@ -64,7 +64,7 @@ export default{
   },
 	data() {
 		return {
-      slideSpeed: 4000,
+      slideSpeed: 3000,
 		  productList: {
 		  	pc: {
 		  	  title: 'PC产品',
