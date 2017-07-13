@@ -1,11 +1,21 @@
 <template>
 	<div>		
-		<div class="dialog-container" v-if="isShow">
+<!-- 		<div class="dialog-container" v-if="isShow">
 			<div class="cover" @click="closeDialog"></div>
 			<div class="content">
 				<p class="close" @click="closeDialog">x</p>
 				<slot>empty</slot>
 			</div>
+		</div> -->
+		<!-- transition必须紧跟v-if -->
+		<div class="dialog-container" >
+			<div class="cover" @click="closeDialog" v-if="isShow"></div>
+			<transition name="drop">
+				<div class="content"  v-if="isShow">
+					<p class="close" @click="closeDialog">x</p>
+					<slot>empty</slot>
+				</div>
+			</transition>
 		</div>
 	</div>
 </template>
@@ -72,5 +82,16 @@ export default{
   height: 20px;
   text-align: center;
   cursor: pointer;
+}
+
+.drop-enter-active{
+transition: all .5s ease;
+}
+.drop-leave-active{
+transition: all .3s ease;
+transform: translateY(-500px);
+}
+.drop-enter{
+transform: translateY(-500px);
 }
 </style>

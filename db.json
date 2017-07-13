@@ -21,5 +21,9 @@
   ],
   "getUser": {
     "userName": "ray"
+  },
+  "login": {
+    "userName": "ray",
+    "userId": 12313
   }
 }

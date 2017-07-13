@@ -59,7 +59,7 @@ export default{
   },
   methods:{
     doSthOnSlideChange(){
-      console.log('doSthOnSlideChange run!')      
+/*      console.log('doSthOnSlideChange run!')      */
     }
   },
 	data() {

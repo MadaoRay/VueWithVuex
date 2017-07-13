@@ -11,6 +11,7 @@
 			<span class="error">{{ passwordError.errorText }}</span>
 		</div>
 		<input class="mt10" type="button" value="登录" id="login" @click="login"/>
+		<p>{{ errorText }}</p>
 	</div>
 </template>
 
@@ -20,19 +21,30 @@ export default {
 		return{
 			userName: '',
 			password: '',
+			errorText: ''
 		}
 	},
 	methods:{
 		login(){
-			if(this.userError.status || this.passwordError.status){
-				alert('')
+			if(!this.userError.status || !this.passwordError.status){
+				this.errorText = '部分选项未通过'
 			}
-			console.log(this.userName + ' ' + this.password)
+			else{
+				this.errorText = ''
+				console.log('login')
+				this.$http.get('api/login')
+				.then((res) => {
+					this.$emit('has-log',res.data)//传给layout
+				},(error) =>{
+					console.log(error)
+				})
+			}
+			/*console.log(this.userName + ' ' + this.password)*/
 		}
 	},
 	computed:{
 		userError(){
-			let errorText,status
+			let errorText, status
 			if(!/@/g.test(this.userName)){
 				status = false
 				errorText = '不包含@'
@@ -41,13 +53,17 @@ export default {
 				status = true
 				errorText = ''
 			}
+			if(!this.userFlag){
+				errorText = ''
+				this.userFlag = true
+			}
 			return {
 				status,
 				errorText
 			}
 		},
 		passwordError(){
-			let errorText,status
+			let errorText, status
 			if(!/^\w{1,6}$/g.test(this.password)){
 				status = false
 				errorText = '密码不是1-6位'
@@ -55,6 +71,10 @@ export default {
 			else{
 				status = true
 				errorText = ''
+			}
+			if(!this.passwordFlag){
+				errorText = ''
+				this.passwordFlag = true
 			}
 			return{
 				status,

@@ -4,9 +4,12 @@
 			<div class="app-head-inner">
 				<img src="../assets/logo.png">
 				<div class="nav-list">
-					<li @click="loginClick">登录</li>
-					<li class="nav-pile">|</li>
-					<li @click="registerClick">注册</li>
+					<li>{{ userName }}</li>
+					<li v-if="userName!== ''" class="nav-pile">|</li>
+					<li v-if="userName=== ''" @click="loginClick">登录</li>
+					<li v-if="userName=== ''" class="nav-pile">|</li>
+					<li v-if="userName=== ''" @click="registerClick">注册</li>
+					<li v-if="userName!== ''" @click="logout">退出</li>
 					<li class="nav-pile">|</li>
 					<li @click="aboutClick">关于</li>
 				</div>
@@ -24,7 +27,7 @@
 			<p>about</p>
 		</my-dialog>
 		<my-dialog :is-show="isShowLoginDialog" @on-close="closeDialog('isShowLoginDialog')">
-			<login-form></login-form>
+			<login-form @has-log="onSuccessLogin"></login-form>
 		</my-dialog>
 		<my-dialog :is-show="isShowRegisterDialog" @on-close="closeDialog('isShowRegisterDialog')">
 			<register-form></register-form>
@@ -46,7 +49,8 @@ export default{
     return {
       isShowAboutDialog: false,
       isShowLoginDialog: false,
-      isShowRegisterDialog: false
+      isShowRegisterDialog: false,
+      userName: ''
     }
   },
   methods:{
@@ -61,6 +65,11 @@ export default{
   	},
   	closeDialog(attr){
   		this[attr] = false
+  	},
+  	onSuccessLogin(data){
+  		console.log(data)
+  		this.closeDialog('isShowLoginDialog')
+  		this.userName = data.userName
   	}
   }
 }
