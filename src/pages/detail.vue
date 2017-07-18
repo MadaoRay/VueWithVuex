@@ -49,9 +49,13 @@
                 <h2>产品说明</h2>
                 <p class="des">历史资料、科学实验、检验、统计等所获得的和用于科学研究、技术设计、查证、决策等的数值加以统计为解决方案做前期准备。</p>
                 <table>
-                    <thead>
+                    <tbody>
                         <tr>
-                            <td>安全</td>
+                            <td>
+                                <div>
+                                    <label>安全</label>
+                                </div>
+                            </td>
                             <td>安全</td>
                             <td>安全</td>
                             <td>安全</td>
@@ -59,8 +63,6 @@
                             <td>安全</td>
                             <td>安全</td>
                         </tr>
-                    </thead>
-                    <tbody>
                         <tr>
                             <td>电子</td>
                             <td>电子</td>
@@ -165,5 +167,11 @@ button{
   color: white;
   border-radius: 5%;
 }
-table
+table{
+    border-collapse:collapse;
+}
+table tr td{
+    border:1px solid #ccc;
+    padding: 10px 15px;
+}
 </style>
