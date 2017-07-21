@@ -143,4 +143,7 @@ a{
 	width: 1200px;
 	margin: 0 auto;
 }
+.fl{
+    float: left;
+}
 </style>

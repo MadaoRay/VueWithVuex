@@ -3,79 +3,19 @@
         <div class="detail-left">
         <img src="../assets/images/1.png">
         <ul>
-            <li>111</li>
+            <router-link tag="li" to="/detail/statistics">数据统计</router-link>
+            <router-link tag="li" to="/detail/forecast">数据预测</router-link>
+            <router-link tag="li" to="/detail/analyze">流量分析</router-link>
+            <router-link tag="li" to="/detail/advertise">广告发布</router-link>
+         <!--    <li ></li> -->
             <li>111</li>
             <li>111</li>
             <li>111</li>
         </ul>
         </div>
-        <div class="detail-right">
-            <div class="analyze">          
-                <h2>数据统计</h2>
-                <p class="des">历史资料、科学实验、检验、统计等所获得的和用于科学研究、技术设计、查证、决策等的数值加以统计为解决方案做前期准备。</p>
-                <div class="detail-form">
-                    <div class="inline">
-                        <label>产品类型：</label>
-                        <ul>
-                          <li>红色版</li>
-                          <li>红色版</li>
-                          <li>红色版</li>
-                        </ul>
-                    </div>
-                    <div class="inline">
-                        <label>适用地区：</label>
-                        <select>
-                          <option>上海</option>
-                          <option>上海</option>
-                          <option>上海</option>
-                          <option>上海</option>
-                        </select>
-                    </div>
-                  <div class="inline">
-                        <label>有效期：</label>
-                        <span>半年</span>
-                  </div>
-                  <div class="inline">
-                        <label>总价：</label>
-                        <span>500元</span>
-                  </div>
-                  <div class="inline">
-                        <label>&nbsp;</label>
-                        <button>立即购买</button>
-                  </div>
-                </div>
-            </div>
-            <div class="data">
-                <h2>产品说明</h2>
-                <p class="des">历史资料、科学实验、检验、统计等所获得的和用于科学研究、技术设计、查证、决策等的数值加以统计为解决方案做前期准备。</p>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div>
-                                    <label>安全</label>
-                                </div>
-                            </td>
-                            <td>安全</td>
-                            <td>安全</td>
-                            <td>安全</td>
-                            <td>安全</td>
-                            <td>安全</td>
-                            <td>安全</td>
-                        </tr>
-                        <tr>
-                            <td>电子</td>
-                            <td>电子</td>
-                            <td>电子</td>
-                            <td>电子</td>
-                            <td>电子</td>
-                            <td>电子</td>
-                            <td>电子</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
     </div>
 </template>
 
@@ -89,7 +29,7 @@ export default{
 }
 </script>
 
-<style scoped>
+<style>
 .detail-container{
   margin: 0 auto;
   width: 1200px;
@@ -116,17 +56,26 @@ export default{
 .detail-right{
   float: left;
   width: 980px;
-  background-color: white;
   min-height:400px;
   margin-left: 20px;
 }
-h2{
+
+.detail-right h2{
   font-size: 20px;
-  padding: 20px;  
+  padding: 0 20px 20px;  
 }
-.des{
-  color: #999;
+.detail-right .des{
   padding: 15px 20px;  
+  line-height: 1.5;
+}
+.detail-right .data{
+    margin: 20px 0;
+    background-color: white;
+    padding: 20px 0;
+}
+.detail-right .analyze{
+    padding: 20px 0;
+    background-color: white;
 }
 .detail-form{
   margin-top: 30px;
@@ -160,18 +109,22 @@ h2{
   border: 1px solid #ccc;
   border-radius: 10%;
 }
-button{
+.detail-form .inline button{
   background-color: #4fc08d;
-  padding: 5px 10px;
+  padding: 8px 18px;
   border: none;
   color: white;
   border-radius: 5%;
 }
-table{
+.table-container table{
     border-collapse:collapse;
+    width: 100%;
 }
-table tr td{
+.table-container table tr td{
     border:1px solid #ccc;
     padding: 10px 15px;
+}
+.table-container{
+    padding: 15px;
 }
 </style>
