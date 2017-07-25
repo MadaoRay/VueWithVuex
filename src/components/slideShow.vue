@@ -1,12 +1,14 @@
 <template>
   <div class="slide-container" @mouseover="stopInterval" @mouseout="runInterval">
    <div class="slide-img">
-    <transition name="slide-trans">
-      <img v-if="isShow" :src="slides[slideIndex].src" width="900" height="500">
-    </transition>
-    <transition name="slide-trans-old">
-      <img v-if="!isShow" :src="slides[slideIndex].src" width="900" height="500">
-    </transition>
+   <router-link :to="{ path:slides[slideIndex].href }">
+      <transition name="slide-trans">
+        <img v-if="isShow" :src="slides[slideIndex].src" width="900" height="500">
+      </transition>
+      <transition name="slide-trans-old">
+        <img v-if="!isShow" :src="slides[slideIndex].src" width="900" height="500">
+      </transition>
+   </router-link>
       <div class="slide-pages">       
         <ul class="slide-ul">
           <li @click="goto(preIndex)"><</li>

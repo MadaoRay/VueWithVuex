@@ -12,30 +12,31 @@ Vue.use(Router)
 export default new Router({
   mode: 'history', // html的history模式
   routes: [
-      {
-        path: '/',
-        component: IndexPage
-      },
+    {
+      path: '/',
+      component: IndexPage
+    },
     {
       path: '/detail',
       component: DetailPage,
-      children:[
+      redirect: '/detail/statistics',
+      children: [
         {
-          path:'/detail/statistics',
+          path:'statistics',
           component: Statistics
         },
         {
-          path:'/detail/forecast',
+          path:'forecast',
           component: Forecast
         },
         {
-          path:'/detail/analyze',
+          path:'analyze',
           component: Analyze
         },
         {
-          path:'/detail/advertise',
+          path:'advertise',
           component: Advertise
-        },
+        }
       ]
     }
   ]

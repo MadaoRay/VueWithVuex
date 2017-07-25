@@ -40,14 +40,17 @@
           </div>
         </div>
       </div>
+      <div style="clear:both;"></div>
+      <selection></selection>
   </div>
 </template>
 
 <script>
 import slideShow from '../components/slideShow'
+import Selection from '../components/Selection'
 export default{
   components: {
-    slideShow
+    slideShow,Selection
   },
   created:function() {
     this.$http.get('api/getNewsList')//json-server模拟服务器上的模拟数据
@@ -110,7 +113,7 @@ export default{
           title: '开放产品',
           description: '开放产品是一款开放产品',
           id: 'car',
-          toKey: 'analysis',
+          toKey: 'analyze',
           saleout: false
         },
         {
@@ -139,7 +142,7 @@ export default{
       {
           src: require('../assets/slideShow/1.jpeg'),
           title: '银魂1',
-          href: 'detail/analysis'
+          href: 'detail/analyze'
         },
         {
           src: require('../assets/slideShow/2.jpeg'),

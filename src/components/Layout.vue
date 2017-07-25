@@ -2,7 +2,9 @@
 	<div id="app">
 		<div class="app-header">
 			<div class="app-head-inner">
-				<img src="../assets/logo.png">
+                <router-link :to="{ path:'/' }">
+				    <img src="../assets/logo.png">
+                </router-link>
 				<div class="nav-list">
 					<li>{{ userName }}</li>
 					<li v-if="userName!== ''" class="nav-pile">|</li>

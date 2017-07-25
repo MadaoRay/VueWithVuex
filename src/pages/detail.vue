@@ -1,20 +1,18 @@
 <template>	
     <div class="detail-container">
         <div class="detail-left">
-        <img src="../assets/images/1.png">
+        <img :src="productIcon">
         <ul>
-            <router-link tag="li" to="/detail/statistics">数据统计</router-link>
+           <router-link v-for="item in infoList" tag="li" :to="{path:item.path}" active-class="active">{{ item.des }}</router-link>
+           <!--  <router-link tag="li" to="/detail/statistics">数据统计</router-link>
             <router-link tag="li" to="/detail/forecast">数据预测</router-link>
             <router-link tag="li" to="/detail/analyze">流量分析</router-link>
             <router-link tag="li" to="/detail/advertise">广告发布</router-link>
-         <!--    <li ></li> -->
-            <li>111</li>
-            <li>111</li>
-            <li>111</li>
+            <router-link v-for="" tag=li :to=""></router-link> -->
         </ul>
         </div>
         <keep-alive>
-            <router-view></router-view>
+           <router-view></router-view>
         </keep-alive>
     </div>
 </template>
@@ -23,7 +21,39 @@
 export default{
   data(){
     return {
-      msg: ''
+      infoList: [
+        {
+          des:'数据统计',
+          path: 'statistics',
+          img: require('../assets/images/1.png')
+        },
+        {
+          des:'数据预测',
+          path: 'forecast',
+          img: require('../assets/images/2.png')
+        },
+        {
+          des:'流量分析',
+          path: 'analyze',
+          img: require('../assets/images/3.png')
+        },
+        {
+          des:'广告发布',
+          path: 'advertise',
+          img: require('../assets/images/4.png')
+        }
+      ],
+      imgIcon:{
+          '/detail/statistics':require('../assets/images/1.png'),
+          '/detail/forecast':require('../assets/images/2.png'),
+          '/detail/analyze':require('../assets/images/3.png'),
+          '/detail/advertise':require('../assets/images/4.png'),
+        }
+    }
+  },
+  computed:{
+    productIcon(){
+      return this.imgIcon[this.$route.path]
     }
   }
 }
@@ -117,14 +147,18 @@ export default{
   border-radius: 5%;
 }
 .table-container table{
-    border-collapse:collapse;
-    width: 100%;
+  border-collapse:collapse;
+  width: 100%;
 }
 .table-container table tr td{
-    border:1px solid #ccc;
-    padding: 10px 15px;
+  border:1px solid #ccc;
+  padding: 10px 15px;
 }
 .table-container{
-    padding: 15px;
+  padding: 15px;
+}
+ul .active{
+  background-color: #4fc08d;
+  color: white;
 }
 </style>
